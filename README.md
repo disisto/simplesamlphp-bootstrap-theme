@@ -11,7 +11,7 @@ SimpleSAMLphp Bootstrap Theme is a child theme for <a href="https://github.com/s
 - [Requirements]( https://github.com/disisto/simplesamlphp-bootstrap-theme/wiki#requirements)
 - [Installation]( https://github.com/disisto/simplesamlphp-bootstrap-theme/wiki#installation)
   - [Download]( https://github.com/disisto/simplesamlphp-bootstrap-theme/wiki#download)
-     - [curl]( https://github.com/disisto/simplesamlphp-bootstrap-theme/wiki#curl)
+     - [cURL]( https://github.com/disisto/simplesamlphp-bootstrap-theme/wiki#curl)
      - [wget]( https://github.com/disisto/simplesamlphp-bootstrap-theme/wiki#wget)
      - [git]( https://github.com/disisto/simplesamlphp-bootstrap-theme/wiki#git)
   - [Enable Theme in config.php]( https://github.com/disisto/simplesamlphp-bootstrap-theme/wiki#enable-theme-in-configphp)
