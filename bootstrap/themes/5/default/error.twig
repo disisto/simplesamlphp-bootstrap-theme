@@ -1,0 +1,132 @@
+{#
+*    SimpleSAMLphp Bootstrap Theme
+*    Version 0.1.0
+*
+*    SimpleSAMLphp Bootstrap Theme is a child theme for SimpleSAMLphp that outputs certain visitor facing
+*    pages via Bootstrap front-end framework. Intended to deliver a seamless look and feel when the
+*    visitor already comes from a project based on a Bootstrap layout.
+*
+*    Documentation: https://github.com/disisto/simplesamlphp-bootstrap-theme
+*    
+*
+*    Licensed under MIT (https://github.com/disisto/simplesamlphp-bootstrap-theme/blob/main/LICENSE)
+*
+*    Copyright (c) 2023 Roberto Di Sisto
+*
+*    Permission is hereby granted, free of charge, to any person obtaining a copy
+*    of this software and associated documentation files (the "Software"), to deal
+*    in the Software without restriction, including without limitation the rights
+*    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+*    copies of the Software, and to permit persons to whom the Software is
+*    furnished to do so, subject to the following conditions:
+*
+*    The above copyright notice and this permission notice shall be included in all
+*    copies or substantial portions of the Software.
+*     
+*    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+*    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+*    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+*    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+*    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+*    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+*    SOFTWARE.
+#}
+
+{% set pagetitle = dictTitle | trans %}
+{% block is_error %}true{% endblock %}
+{% extends "bootstrap.twig" %}
+{% block content %}
+    <div class="py-4"></div>
+    <p class="h2">{{ dictTitle | trans }}</p>
+    <hr>
+    {{ dictDescr | trans(parameters) }}
+
+    {# include optional information for error
+       Some exceptions set 'includeTemplate' to the name of a template to include.
+       e.g. "core:no_state.tpl.php". The format is "<module>:<template name>"
+    #}
+    {% if includeTemplate -%}
+        {% set parts = includeTemplate|split(':') %}
+        {% set namespacedTemplate = "@" ~ parts[0] ~ "/" ~ parts[1] %}
+        {% include(namespacedTemplate) %}
+    {%- endif %}
+
+    <div class="message-box">
+        <p>{{ 'If you report this error, please also report this tracking number which makes it possible to locate your session in the logs available to the system administrator:' | trans }}</p>
+        <div class="container text-center">
+          <div class="row">
+            <div class="col-auto">
+
+              <div class="input-group mb-3">
+                <input type="text" class="form-control text-center" id="{{ error.trackId }}" placeholder="{{ error.trackId }}">
+                <button class="btn btn-secondary" type="button" onclick="CopyToClip(document.getElementById('CopyTrackId').textContent)">
+                  <svg class="bi mb-1 opacity-100 theme-icon" width="1em" height="1em" fill="currentColor"><use href="#clipboard-check-fill"></use></svg>
+                </button>
+             </div>
+
+            </div>
+            <div class="col-6">
+		<div class="invisible" id="CopyTrackId">{{ error.trackId }}</div>
+	    </div>
+         </div>
+       </div>
+
+    </div>
+
+    {# print out exception only if the exception is available #}
+    {% if showerrors -%}
+        <p class="h2 mt-5">{{'Debug information' | trans}}</p>
+        <hr>
+        <p>{{'The debug information below may be of interest to the administrator / help desk:' | trans}}</p>
+
+        <div class="card mb-4">
+          <div class="card-header">
+            Exeption Message
+          </div>
+          <div class="card-body bg-dark text-white">
+            <p class="card-text"><pre>{{ error.exceptionMsg }}</pre>
+          </div>
+        </div>
+
+    {% if  (error.exceptionTrace|default(null) is not null and error.exceptionTrace|default(null) is not empty) %}
+        <div class="card mb-4">
+          <div class="card-header">
+            Exeption Trace
+          </div>
+          <div class="card-body bg-dark text-white">
+            <p class="card-text"><pre>{{ error.exceptionTrace }}</pre>
+          </div>
+        </div>
+    {%- endif %}
+
+    {%- endif %}
+
+    {# Add error report submit section if we have a valid technical contact. 'errorreportaddress' will only be set if
+       the technical contact email address has been set. #}
+    {% if errorReportAddress is defined -%}
+        <p class="h2 mt-5">{{ 'Report errors' | trans }}</p>
+        <hr>
+        <form action="{{ errorReportAddress }}" class="" method="post">
+            <p>{{ 'Optionally enter your email address, for the administrators to be able contact you for further questions about your issue:' | trans }}</p>
+            <div class="mb-4">
+              <div class="form-floating mb-3">
+                <input type="email" name="email" id="email" class="form-control" value="{{ email }}" placeholder="name@example.com">
+                <label for="email">{{ 'E-mail address:' | trans }}</label>
+              </div>
+              <div class="form-floating mb-3">
+                <textarea class="form-control" name="text" id="textarea" style="height: 100px" placeholder="Leave a comment here" required></textarea>
+                <label for="textarea">{{ 'Explain what you did when this error occurred...' | trans }}</label>
+              </div>
+              <input type="hidden" name="reportId" value="{{ error.reportId }}" />
+              <input type="submit" name="send" class="btn btn-primary" value="{{ 'Send error report' | trans }}" />
+            </div>
+        </form>
+
+    {%- endif %}
+
+        <p class="h2 mt-5">{{ 'How to get help' | trans }}</p>
+        <hr>
+        <p>{{ 'This error probably is due to some unexpected behaviour or to misconfiguration of SimpleSAMLphp. Contact the administrator of this login service, and send them the error message above.' | trans }}</p>
+
+
+{% endblock %}
