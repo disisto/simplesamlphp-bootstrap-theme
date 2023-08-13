@@ -8,13 +8,27 @@ SimpleSAMLphp Bootstrap Theme is a child theme for <a href="https://github.com/s
 
 ## Content
 
+- [Requirements]( https://github.com/disisto/simplesamlphp-bootstrap-theme/wiki#requirements)
+- [Installation]( https://github.com/disisto/simplesamlphp-bootstrap-theme/wiki#installation)
+  - [Download]( https://github.com/disisto/simplesamlphp-bootstrap-theme/wiki#download)
+     - [curl]( https://github.com/disisto/simplesamlphp-bootstrap-theme/wiki#curl)
+     - [wget]( https://github.com/disisto/simplesamlphp-bootstrap-theme/wiki#wget)
+     - [git]( https://github.com/disisto/simplesamlphp-bootstrap-theme/wiki#git)
+  - [Enable Theme in config.php]( https://github.com/disisto/simplesamlphp-bootstrap-theme/wiki#enable-theme-in-configphp)
+- [Customization](https://github.com/disisto/simplesamlphp-bootstrap-theme/wiki#customization)
+  - [Favicon]( https://github.com/disisto/simplesamlphp-bootstrap-theme/wiki#favicon)
+  - [Logo]( https://github.com/disisto/simplesamlphp-bootstrap-theme/wiki#logo)
+  - [Copyright (footer)]( https://github.com/disisto/simplesamlphp-bootstrap-theme/wiki#copyright-footer)
+     - [Year specification]( https://github.com/disisto/simplesamlphp-bootstrap-theme/wiki#year-specification)
+     - [Signature specification]( https://github.com/disisto/simplesamlphp-bootstrap-theme/wiki#signature-specification)
+  - [Individual design]( https://github.com/disisto/simplesamlphp-bootstrap-theme/wiki#individual-design)
+
+---
+
 ## Requirements
 
 - SimpleSAMLphp 2.0
 - Bootstrap 5.3  ${\color{grey}(needed  \space files  \space are  \space already  \space included  \space in  \space this  \space project)}$
-
-## Quick Install
-No&nbsp;🚀 &nbsp;science: Upload the files in the appropriate folder to the SimpleSAMLphp Identidy Provider (IdP), make one more entry in the config.php, replace the logo and favicon to your coporate design and you're good to go.
 
 ---
 
