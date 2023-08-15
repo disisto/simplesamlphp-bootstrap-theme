@@ -27,8 +27,10 @@ SimpleSAMLphp Bootstrap Theme is a child theme for <a href="https://github.com/s
 
 ## Requirements
 
-- SimpleSAMLphp 2.0
-- Bootstrap 5.3  ${\color{grey}(needed  \space files  \space are  \space already  \space included  \space in  \space this  \space project)}$
+- SimpleSAMLphp ```2.0```
+- Bootstrap ```5.3```*  
+
+*Needed files are already included in this project.
 
 ---
 
