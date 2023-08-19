@@ -1,4 +1,4 @@
-{#
+/*!
 *    SimpleSAMLphp Bootstrap Theme
 *    Version 0.2.0
 *
@@ -7,7 +7,7 @@
 *    visitor already comes from a project based on a Bootstrap layout.
 *
 *    Documentation: https://github.com/disisto/simplesamlphp-bootstrap-theme
-*    
+*
 *
 *    Licensed under MIT (https://github.com/disisto/simplesamlphp-bootstrap-theme/blob/main/LICENSE)
 *
@@ -22,7 +22,7 @@
 *
 *    The above copyright notice and this permission notice shall be included in all
 *    copies or substantial portions of the Software.
-*     
+*
 *    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 *    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 *    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -30,13 +30,18 @@
 *    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 *    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 *    SOFTWARE.
-#}
+*/
 
-{% set pagetitle = 'Welcome'|trans %}
-
-{% extends "bootstrap.twig" %}
-
-{% block content %}
-    <div class="d-flex align-items-center justify-content-center vh-50 h1">{{ 'Welcome'|trans }}</div>
-
-{% endblock %}
+document.addEventListener("DOMContentLoaded", function () {
+const passwordInput = document.querySelector("#password");
+const eyeIcon = document.querySelector(".eye-icon");
+    eyeIcon.addEventListener("click", function () {
+        if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        eyeIcon.querySelector("use").setAttribute("href", "#eye-slash");
+        } else {
+        passwordInput.type = "password";
+        eyeIcon.querySelector("use").setAttribute("href", "#eye");
+        }
+    });
+});

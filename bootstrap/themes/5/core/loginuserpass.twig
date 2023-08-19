@@ -1,6 +1,6 @@
 {#
 *    SimpleSAMLphp Bootstrap Theme
-*    Version 0.1.0
+*    Version 0.2.0
 *
 *    SimpleSAMLphp Bootstrap Theme is a child theme for SimpleSAMLphp that outputs certain visitor facing
 *    pages via Bootstrap front-end framework. Intended to deliver a seamless look and feel when the
@@ -33,6 +33,7 @@
 #}
 
 {% set pagetitle = 'Enter your username and password'|trans %}
+{% block is_login %}true{% endblock %}
 {% extends "bootstrap.twig" %}
 
 {% block postload %}
@@ -69,7 +70,7 @@
 		{% endif %}
 
                 <div class="form-floating mt-4">
-                    <input id="username" {{ forceUsername ? 'disabled' }} placeholder="name@example.com" type="text" name="username" class="form-control"
+                    <input id="username" {{ forceUsername ? 'disabled' }} placeholder="name@example.com" type="email" name="username" class="form-control"
             {%- if not forceUsername %} tabindex="1" value="{{ username }}" autocomplete="username" {% endif %}
             {%- if not forceUsername and not username %} autofocus {% endif %} >
                     <label for="username">{{ forceUsername ? username : 'Username'|trans }}</label>
@@ -88,6 +89,11 @@
                     <input id="password" type="password" tabindex="2" name="password" class="form-control" autocomplete="current-password" placeholder="Password"
                     {%- if forceUsername or username %} autofocus {% endif %} >
                     <label for="password">{{ 'Password'|trans }}</label>
+                    <div class="password-toggle">
+                      <svg class="bi eye-icon opacity-50" width="1.75em" height="1.75em">
+                        <use href="#eye"></use>
+                      </svg>
+                     </div>
                 </div>
 
                 {% if rememberMeEnabled -%}

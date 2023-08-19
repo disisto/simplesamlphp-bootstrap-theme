@@ -1,6 +1,6 @@
 {#
 *    SimpleSAMLphp Bootstrap Theme
-*    Version 0.1.0
+*    Version 0.2.0
 *
 *    SimpleSAMLphp Bootstrap Theme is a child theme for SimpleSAMLphp that outputs certain visitor facing
 *    pages via Bootstrap front-end framework. Intended to deliver a seamless look and feel when the
@@ -59,8 +59,10 @@
 
               <div class="input-group mb-3">
                 <input type="text" class="form-control text-center" id="{{ error.trackId }}" placeholder="{{ error.trackId }}">
-                <button class="btn btn-secondary" type="button" onclick="CopyToClip(document.getElementById('CopyTrackId').textContent)">
-                  <svg class="bi mb-1 opacity-100 theme-icon" width="1em" height="1em" fill="currentColor"><use href="#clipboard-check-fill"></use></svg>
+                <button id="copyButton" class="btn btn-secondary" type="button" data-copy-text="{{ error.trackId }}">
+                  <svg id="copyIcon" class="bi mb-1 opacity-100 theme-icon" width="1em" height="1em" fill="currentColor">
+		    <use href="#clipboard"></use>
+                  </svg>
                 </button>
              </div>
 
@@ -106,7 +108,7 @@
     {% if errorReportAddress is defined -%}
         <p class="h2 mt-5">{{ 'Report errors' | trans }}</p>
         <hr>
-        <form action="{{ errorReportAddress }}" class="" method="post">
+        <form action="{{ errorReportAddress }}" class="needs-validation" method="post" novalidate>
             <p>{{ 'Optionally enter your email address, for the administrators to be able contact you for further questions about your issue:' | trans }}</p>
             <div class="mb-4">
               <div class="form-floating mb-3">
@@ -115,6 +117,9 @@
               </div>
               <div class="form-floating mb-3">
                 <textarea class="form-control" name="text" id="textarea" style="height: 100px" placeholder="Leave a comment here" required></textarea>
+                <div class="invalid-feedback">
+                  Please enter a short error description in the textarea.
+                </div>
                 <label for="textarea">{{ 'Explain what you did when this error occurred...' | trans }}</label>
               </div>
               <input type="hidden" name="reportId" value="{{ error.reportId }}" />
