@@ -28,7 +28,7 @@ SimpleSAMLphp Bootstrap Theme is a child theme for <a href="https://github.com/s
 
 ## Requirements
 
-- SimpleSAMLphp ```2.0```
+- SimpleSAMLphp ```2.0``` or ```2.1```
 - Bootstrap ```5.3```*  
 
 *Needed files are already included in this project.
