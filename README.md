@@ -28,10 +28,10 @@ SimpleSAMLphp Bootstrap Theme is a child theme for <a href="https://github.com/s
 
 ## Requirements
 
-| SimpleSAMLphp Version | Theme Version                                                               | Compatibility |
-|-----------------------|-----------------------------------------------------------------------------|---------------|
-| 2.0.x - 2.2.1        | [0.2.1](https://github.com/disisto/simplesamlphp-bootstrap-theme/tree/0.2.1) | Full          |
-| 2.2.2+               | [0.4.0](https://github.com/disisto/simplesamlphp-bootstrap-theme/tree/0.4.0) | Full          |
+| SimpleSAMLphp Version | Theme Version                                                                       | Compatibility |
+|-----------------------|-------------------------------------------------------------------------------------|---------------|
+| 2.0.x - 2.2.1        | [0.2.1](https://github.com/disisto/simplesamlphp-bootstrap-theme/releases/tag/0.2.1) | Full          |
+| 2.2.2+               | [0.4.0](https://github.com/disisto/simplesamlphp-bootstrap-theme/releases/tag/0.4.0) | Full          |
 
 ---
 
